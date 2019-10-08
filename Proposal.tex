@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\setlength{\parindent}{1em}
+\usepackage{parskip}
+\usepackage{subcaption}
+\usepackage{sectsty}
+
+\title{\textbf{Road Maintenance and Rehabilitation Robot Project Proposal}}
+\author{Nicholas Abate, Jiaxu Song, Vishnu Veeraraghavan, Instructor: Prof. Shiqi Zhang}
+\date{}
+
+\begin{document}
+
+\maketitle
+\section*{Abstract}
+
+After years or servicing, civil infrastructures, such as roads, bridges, and pavements, are beginning to develop cracks. If cracks are unfixed on time, cracks may worsen. Sometimes, cracks compound themselves due to the temperature change, or water damages from the rain. Each year, over billions of dollars, are being used to repair cracks on civil infrastructures in the United States. Fixing road cracks is a complex undertaking that requires collaborations among workers and machines, which may take days to complete. In the meantime, the traffic will be affected due to the working condition. In this report, we present a novel method to fix road cracks using a robot. The robot will possess the ability to identify cracks, follow cracks, and repair cracks with on-board filament from a reservoir. \par
+
+
+
+\section*{Introduction}
+After years or servicing, civil infrastructures, such as roads, bridges, and pavements, are beginning to develop cracks. If cracks are unfixed on time, cracks may worsen. Sometimes, cracks compound themselves due to the temperature change, or water damages from the rain. Each year, over billions of dollars, are being used to repair cracks on civil infrastructures in the United States, even with the decline of productivity on infrastructure projects since 1970~\cite{Skibniewski1990}. Fixing road cracks is a complex undertaking that requires collaborations among workers and machines, which may take days to complete. In the meantime, the traffic will be affected due to the working condition. With the increase of labor cost and shortage in funding, there is a dire need to use machines to fill the needs of these work tasks. In order to overcome these disadvantages, robotic systems were developed to facilitate road maintenance over the years.  \par
+
+Since 1988, the study of automation and robotics for road construction has been explored and implemented~\cite{Deb2013, Hong1997, Maynard2005}. In these publications, the robots still require human operators to control certain maneuvers. In this report, we present a Road Maintenance and Rehabilitation Robot platform which operates autonomously and requires zero human operation. As shown in Figure \ref{fig:robot}. 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.4\linewidth]{robot.jpg}
+	\caption{Robot Prototype}
+	\label{fig:robot}
+\end{figure}
+
+Road construction requires several precise steps: cut and fill operations, grading, base preparation and placement, surface material placement, curbing and guardrail placement, and road maintenance. In order to make this project feasible, we will solely focus on the investment of materials (reference Automation and Robotics Based technologies for road construction, maintenance, and operations). This robot is built with four Mecanum wheels, which allow the robot to achieve mobility in every direction with a faster turning speed. Four IG 42 Motors actuate the wheels. The filling process is completed by one DC Solenoid Valve and a set of Nema 23 Motors and Schneeberger Rails to control the X-Y directions’ movements, shown in Figure \ref{fig:wheels}. 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.6\linewidth]{robotwheels.png}
+	\caption{Wheels and Motors}
+	\label{fig:wheels}
+\end{figure}
+
+The robot is also equipped with an RP-Lidar A2 laser sensor to detect obstacles and a Logitech C920 camera to detect cracks. The power source of this robot is a set of dry batteries connect in series to reach 24 Volts, shown in Figure \ref{fig:sensors}. Future improvement will include a camera facing downward to monitor the ground and cracks. This robot also includes a set of controllers as on-board computers. The Jetson Nano functions as the Master Controller to communicate other drivers: the battery management system, wheel motor driver, power distributor, and printing controller, Shown in Figure \ref{fig:electronics}. \par
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.6\linewidth]{robotsensors.png}
+	\caption{Sensors and Power Source}
+	\label{fig:sensors}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.6\linewidth]{robotelectronics.png}
+	\caption{Controller and Drivers}
+	\label{fig:electronics}
+\end{figure}
+
+The ultimate goal for this robot is to work collaboratively with other robots, such as UAV (shown in Figure \ref{fig:conebot}), and cone-bot (shown in Figure \ref{fig:uav}), to autonomously perform the task of fixing cracks on the roads. 
+
+\begin{figure}[htbp]
+\begin{minipage}[htbp]{0.5\linewidth}
+\centering
+\includegraphics[scale = 0.6]{conebot.png}
+\caption{Cone Bot}
+\label{fig:conebot}
+\end{minipage}
+\begin{minipage}[htbp]{0.5\linewidth}
+\centering
+\includegraphics[scale = 0.6]{uav.png}
+\caption{RAV Coordinator}
+\label{fig:uav}
+\end{minipage}
+\end{figure}
+
+The cone-bots will stop the traffic, and the UAV will monitor the traffic from the sky to coordinate the traffic with the cone-bots while the crack-filling robots are fixing the road. With minimum human intervention, the road-maintenance system will work efficiently and cost-effectively. For this project, we are mainly focusing on the crack-filling robot. The primary goal we set for the robot is to perform essential simultaneous localization and mapping (SLAM) using the occupancy grid method, then it will complete a near-optimal coverage path planning with known and unknown crack information, and it will develop a reinforcement learning model to detect and avoid obstacles. If the camera functions normally and be able to detect cracks, it will identify the crack and compute a path to cover the covers by itself. Otherwise, the crack information will be fed to the robot, and the robot will cover the whole working area to find the cracks, then it will follow the cracks and repair them. The secondary goal is to develop a computer vision-based reinforcement learning model to detect cracks for the unknown scenarios. \par
+
+
+
+\bibliographystyle{unsrt}
+\bibliography{reference}
+
+\end{document}
