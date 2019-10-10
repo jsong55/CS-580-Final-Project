@@ -6,6 +6,10 @@
 \usepackage{parskip}
 \usepackage{subcaption}
 \usepackage{sectsty}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{makecell}
 
 \title{\textbf{Road Maintenance and Rehabilitation Robot Project Proposal}}
 \author{Nicholas Abate, Jiaxu Song, Vishnu Veeraraghavan, Instructor: Prof. Shiqi Zhang}
@@ -34,7 +38,7 @@ Since 1988, the study of automation and robotics for road construction has been 
 Road construction requires several precise steps: cut and fill operations, grading, base preparation and placement, surface material placement, curbing and guardrail placement, and road maintenance. In order to make this project feasible, we will solely focus on the investment of materials (reference Automation and Robotics Based technologies for road construction, maintenance, and operations). This robot is built with four Mecanum wheels, which allow the robot to achieve mobility in every direction with a faster turning speed. Four IG 42 Motors actuate the wheels. The filling process is completed by one DC Solenoid Valve and a set of Nema 23 Motors and Schneeberger Rails to control the X-Y directions’ movements, shown in Figure \ref{fig:wheels}. 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.6\linewidth]{robotwheels.png}
+	\includegraphics[width=.5\linewidth]{robotwheels.png}
 	\caption{Wheels and Motors}
 	\label{fig:wheels}
 \end{figure}
@@ -42,14 +46,14 @@ Road construction requires several precise steps: cut and fill operations, gradi
 The robot is also equipped with an RP-Lidar A2 laser sensor to detect obstacles and a Logitech C920 camera to detect cracks. The power source of this robot is a set of dry batteries connect in series to reach 24 Volts, shown in Figure \ref{fig:sensors}. Future improvement will include a camera facing downward to monitor the ground and cracks. This robot also includes a set of controllers as on-board computers. The Jetson Nano functions as the Master Controller to communicate other drivers: the battery management system, wheel motor driver, power distributor, and printing controller, Shown in Figure \ref{fig:electronics}. \par
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.6\linewidth]{robotsensors.png}
+	\includegraphics[width=.5\linewidth]{robotsensors.png}
 	\caption{Sensors and Power Source}
 	\label{fig:sensors}
 \end{figure}
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.6\linewidth]{robotelectronics.png}
+	\includegraphics[width=.5\linewidth]{robotelectronics.png}
 	\caption{Controller and Drivers}
 	\label{fig:electronics}
 \end{figure}
@@ -71,7 +75,24 @@ The ultimate goal for this robot is to work collaboratively with other robots, s
 \end{minipage}
 \end{figure}
 
-The cone-bots will stop the traffic, and the UAV will monitor the traffic from the sky to coordinate the traffic with the cone-bots while the crack-filling robots are fixing the road. With minimum human intervention, the road-maintenance system will work efficiently and cost-effectively. For this project, we are mainly focusing on the crack-filling robot. The primary goal we set for the robot is to perform essential simultaneous localization and mapping (SLAM) using the occupancy grid method, then it will complete a near-optimal coverage path planning with known and unknown crack information, and it will develop a reinforcement learning model to detect and avoid obstacles. If the camera functions normally and be able to detect cracks, it will identify the crack and compute a path to cover the covers by itself. Otherwise, the crack information will be fed to the robot, and the robot will cover the whole working area to find the cracks, then it will follow the cracks and repair them. The secondary goal is to develop a computer vision-based reinforcement learning model to detect cracks for the unknown scenarios. \par
+The cone-bots will stop the traffic, and the UAV will monitor the traffic from the sky to coordinate the traffic with the cone-bots while the crack-filling robots are fixing the road. With minimum human intervention, the road-maintenance system will work efficiently and cost-effectively. For this project, we are mainly focusing on the crack-filling robot. The primary goal we set for the robot is to perform essential simultaneous localization and mapping (SLAM) using the occupancy grid method, then it will complete a near-optimal coverage path planning with known and unknown crack information, and it will develop a reinforcement learning model to detect and avoid obstacles. If the camera functions normally and be able to detect cracks, it will identify the crack and compute a path to cover the covers by itself. Otherwise, the crack information will be fed to the robot, and the robot will cover the whole working area to find the cracks, then it will follow the cracks and repair them. The secondary goal is to develop a computer vision-based reinforcement learning model to detect cracks for the unknown scenarios. Shown in Table~\ref{tab:criteria}. \par
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{c| c | c| c}
+\hline
+\textbf{Success Criteria} & \textbf{Threshold} & \textbf{Plan of Record} &\textbf{Stretch}\\
+\hline
+\textbf{SLAM:} & \makecell{Manually control the \\motion of the robot} & \makecell{Basic Autonomous \\Capability} & Fully Autonomous \\
+\hline
+\textbf{Path Planning:} & \makecell{Cover Most of \\ the Cracks} & Cover Every Crack & \makecell{Cover Every Crack with \\Minimum Moving Distance}\\
+\hline
+\textbf{Reinforcement Learning:} & \makecell{Basic Obstacle \\Avoidance Capability} & TBD & Implement Computer Vision\\
+\hline
+\end{tabular}
+\caption{Target Specifications}
+\label{tab:criteria}
+\end{table}
 
 
 
